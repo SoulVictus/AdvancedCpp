@@ -33,6 +33,7 @@ int main()
 
     std::cout << add1(ptr1, ptr2) << "\n";
     std::cout << add1(text1, text2) << "\n";
+    std::cout << add1(a, b) << "\n";
     
     return 0;
 }

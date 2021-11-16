@@ -19,5 +19,8 @@ constexpr long long int hypercube()
 
 int main()
 {
+    static_assert(hypercube<2, 3>() == 8);
     std::cout << hypercube<5, 20>() << '\n';
+
+    return 0;
 }
