@@ -6,32 +6,35 @@ class A
 {
 private:
     char* text;
-    int length;
+    size_t size;
 public:
 
     A(std::string const& str)
     {
-        text = new char[str.size() + 1];
-        length = str.size()+1;
+        size = str.size();
+        text = new char[size + 1];
         std::strcpy(text, str.c_str());
         std::cout << "main constructor" << "\n";
     }
 
     A(const A& obj)
     {
-        std::size_t size = sizeof(obj);
+        size = obj.size;
         text = new char[size + 1];
-        length = obj.length;
-        std::strcpy(text, obj.text);
+        for (size_t i = 0; i < size; i++)
+        {
+            text[i] = obj.text[i];
+        }
+        text[size+1] = '\0';
         std::cout << "copy constructor" << "\n";
     }
 
     A(A&& obj)
     {
         text = obj.text;
-        length = obj.length;
+        size = obj.size;
         obj.text = nullptr;
-        obj.length = 0;
+        obj.size = 0;
         std::cout << "move constructor" << "\n";
     }
 
@@ -42,10 +45,10 @@ public:
             delete text;
 
             text = obj.text;
-            length = obj.length;
+            size = obj.size;
 
             obj.text = nullptr;
-            obj.length = 0;
+            obj.size = 0;
 
             return *this;   
         }

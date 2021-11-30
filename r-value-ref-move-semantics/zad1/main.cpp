@@ -1,16 +1,39 @@
 #include "a.hpp"
 #include <vector>
 
+A copy(A const& obj)
+{
+    return A(obj);
+}
+
+A copy (A&& obj)
+{
+    return A(std::move(obj));
+}
+
+template<class T>
+A copy(T&& obj)
+{
+    return A(std::forward<T>(obj));
+}
+
 int main()
 {
     std::vector<A> testVec;
 
     A test1 = A("test");
-    A test2 = A("test2");
-    A test3 = test2;
+    std::cout << test1.get() << "\n";
+    A test2 = A(test1);
+    std::cout << test2.get() << "\n";
+    A test3 = A(std::move(test2));
+    std::cout << test3.get() << "\n";
 
-    testVec.push_back(A("vector"));
-    testVec.push_back(A("vector2"));
+    A test4("zad9");
+    std::cout << test4.get() << "\n";
+    A test5 = copy(test4);
+    std::cout << test5.get() << "\n";
+    A test6 = copy(std::move(test4));
+    std::cout << test6.get() << "\n";
 
-    // testVec.insert(testVec.begin() + 1, A("newvector3"));
+    return 0;
 }
