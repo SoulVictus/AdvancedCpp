@@ -56,7 +56,7 @@ public:
 
     ~A()
     {
-        delete text;
+        delete [] text;
     }
 
     char* get()
