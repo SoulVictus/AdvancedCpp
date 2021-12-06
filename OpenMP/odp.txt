@@ -45,3 +45,4 @@ t = [2.346, 2.278, 2.238, 2.426]
 
 - Na windowsie clock() mierzy wall time, a na linuxie cpu time
 - 
+https://stackoverflow.com/questions/27679041/the-differences-in-the-accuracy-of-the-calculations-in-single-multi-threaded
