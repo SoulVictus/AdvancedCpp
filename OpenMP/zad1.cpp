@@ -4,7 +4,8 @@
 int main()
 {
     #pragma omp parallel
-    std::cout << "Witaj z wątku nr " << omp_get_thread_num() << " spośród " << omp_get_num_threads() << "\n";
+    #pragma omp critical
+    std::cout << "Witaj z watku nr " << omp_get_thread_num() << " sposrod " << omp_get_num_threads() << "\n";
 
     return 0;
 }

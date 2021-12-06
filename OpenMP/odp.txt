@@ -1,0 +1,47 @@
+# zad1
+- Nie, gdyż dyrektywa 'parallel' 
+powoduje że poniższy kod będzie wykonanywany równolegle przez wiele wątków.
+A nie wiadomo, który wątek zacznie pracę jako pierwszy.
+- Nie, gdyż że poniższy kod będzie wykonanywany równolegle przez wiele wątków.
+A nie wiadomo, który wątek zacznie pracę jako pierwszy. Kod wykonywany jest jednocześnie, więc dlatego wyjście się zazębia.
+
+- cout wykona się raz, gdyż poniższy kod do wykonania dostanie tylko jeden wątek. kod ten nie jest współbieżny.
+Nie koniecznie jest to wątek główny
+- cout wykona się raz, gdyż poniższy kod do wykonania dostanie tylko jeden wątek, wątek.
+- cout wykona się wielokrotnie, przez kilka wątków, ale nie równolegle. 
+Kod jest wykonywany przez różne wątki pokolei, różna jest kolejność wątków, które wykonają dany kod
+
+# zad2
+- Wyniki dla równoleglego:
+s = 19.4017
+t = [1.167, 1.212, 1.198, 1.188]
+- Wyniki dla szeregowego:
+s = 18.8079
+t = [4.446, 4.461, 4.491, 4.526]
+
+- dla omp_num_threads = 2
+s = 18.8704
+t = [2.346, 2.278, 2.238, 2.426]
+
+- watki
+1: 
+    s = 18.8079
+    t = 4.599
+2:
+    s = 18.8704
+    t = 2.862
+4:
+    s = 19.0267
+    t = 2.075
+6:
+    s = 19.1204
+    t = 1.764
+8:
+    s = 19.4017
+    t = 1.623
+16:
+     = 20.164
+    t = 1.588
+
+- Na windowsie clock() mierzy wall time, a na linuxie cpu time
+- 
