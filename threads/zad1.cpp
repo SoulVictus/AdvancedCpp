@@ -21,19 +21,36 @@ void f(std::string text)
     mutx.unlock();
 }
 
+
+
 void async3(std::launch policy)
 {
+    auto as1 = std::async(policy ,&f, "test3");
+    as1.get();
+}
+
+void async2(std::launch policy)
+{
+    auto as1 = std::async(policy ,&f, "test2");
+    async3(policy);
+    as1.get();
+}
+
+void async(std::launch policy)
+{
     auto as1 = std::async(policy ,&f, "test1");
+    async2(policy);
     as1.get();
 }
 
 int main()
 {
-    std::thread th(f, "ala ma");
-    std::thread th2(f, "kota ma");
+    std::thread th(&f, "ala ma");
+    std::thread th2(&f, "kota ma");
     th.join();
     th2.join();
 
-    async3(std::launch::async);
+    async(std::launch::async);
+    async(std::launch::deferred);
     return 0;
 }
