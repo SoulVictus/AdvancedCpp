@@ -7,7 +7,7 @@
 
 std::mutex mutx;
 
-static std::atomic<unsigned long long> thread_counter;
+static std::atomic<unsigned long long> thread_counter = 0;
 
 unsigned long long thread_id() {
     thread_local unsigned long long id = ++thread_counter;
@@ -16,9 +16,8 @@ unsigned long long thread_id() {
 
 void f(std::string text)
 {
-    mutx.lock();
-    std::cout << thread_id() << " " << text << "\n";
-    mutx.unlock();
+    std::lock_guard<std::mutex> mtx_guard(mutx);
+    std::cout << thread_id() << " " << thread_id() << " " << text << "\n";
 }
 
 
