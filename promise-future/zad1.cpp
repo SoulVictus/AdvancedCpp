@@ -57,7 +57,14 @@ int main()
 
     for(size_t i = 0; i < THREAD_NUM; i++)
     {
-        sum += futures[i].get();
+        try
+        {
+            sum += futures[i].get();
+        }
+        catch (const std::exception& e)
+        {
+            std::cout << "Exception from the thread: " << e.what() << "\n";
+        }
     }
     
     for(size_t i = 0; i < threads.size(); i++)
