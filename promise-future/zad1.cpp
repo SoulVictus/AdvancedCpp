@@ -37,6 +37,10 @@ int main()
 {
     std::vector<double> v1;
     std::vector<double> v2;
+    std::vector<std::thread> threads;
+    std::vector<std::future<double>> futures;
+
+    double sum = 0.0f;
 
     for(int i = 0; i < 100000; i++)
     {
@@ -44,16 +48,16 @@ int main()
         v2.push_back(i+1.0);
     }
 
-    std::vector<std::thread> threads;
-
-    double sum;
-
     for(size_t i = 0; i < THREAD_NUM; i++)
     {
         std::promise<double> promise;
-        std::future<double> result = promise.get_future();
+        futures.push_back(promise.get_future());
         threads.emplace_back(scalar_product, v1, v2, std::move(promise));
-        sum += result.get();
+    }
+
+    for(size_t i = 0; i < THREAD_NUM; i++)
+    {
+        sum += futures[i].get();
     }
     
     for(size_t i = 0; i < threads.size(); i++)
