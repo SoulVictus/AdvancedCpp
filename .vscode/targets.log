@@ -1,0 +1,284 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+ 
+# GNU Make 4.2.1
+# Built for x86_64-pc-linux-gnu
+# Copyright (C) 1988-2016 Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Tue Jan  4 12:13:41 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# environment
+DESKTOP_SESSION = cinnamon
+# default
+.SHELLFLAGS := -c
+# environment
+XDG_SESSION_CLASS = user
+# environment
+XDG_SESSION_TYPE = x11
+# environment
+VSCODE_LOG_NATIVE = false
+# environment
+GTK3_MODULES = xapp-gtk3-module
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# environment
+XAUTHORITY = /home/jlorek/.Xauthority
+# environment
+GDMSESSION = cinnamon
+# default
+MAKE_VERSION := 4.2.1
+# makefile
+CURDIR := /home/jlorek/Pulpit/zaawprogcpp/AdvancedCpp
+# makefile
+SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"pl","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/share/code/code
+# environment
+XDG_CONFIG_DIRS = /etc/xdg/xdg-cinnamon:/etc/xdg
+# environment
+GTK_OVERLAY_SCROLLING = 1
+# makefile
+MAKEFILE_LIST := 
+# automatic
+@F = $(notdir $@)
+# environment
+GIO_LAUNCHED_DESKTOP_FILE = /usr/share/applications/code.desktop
+# 'override' directive
+GNUMAKEFLAGS := 
+# environment
+XDG_DATA_DIRS = /usr/share/cinnamon:/usr/share/gnome:/home/jlorek/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+# environment
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/14087/bus
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# environment
+LESSOPEN = | /usr/bin/lesspipe %s
+# environment
+VSCODE_CWD = /home/jlorek
+# environment
+XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
+# default
+MAKE_HOST := x86_64-pc-linux-gnu
+# environment
+PATH = /home/jlorek/.local/bin:/home/jlorek/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+# environment
+GPG_AGENT_INFO = /run/user/14087/gnupg/S.gpg-agent:0:1
+# environment
+SESSION_MANAGER = local/Vela:@/tmp/.ICE-unix/1176,unix/Vela:/tmp/.ICE-unix/1176
+# environment
+XDG_RUNTIME_DIR = /run/user/14087
+# environment
+VSCODE_LOG_STACK = false
+# environment
+VSCODE_CRASH_REPORTER_START_OPTIONS = {"companyName":"Microsoft","productName":"VSCode","submitURL":"appcenter://code?aid=fba07a4d-84bd-4fc8-a125-9640fc8ce171&uid=2d97f119-6a9a-45f6-b499-d7d1df84d1f9&iid=2d97f119-6a9a-45f6-b499-d7d1df84d1f9&sid=2d97f119-6a9a-45f6-b499-d7d1df84d1f9","uploadToServer":true}
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+# environment
+XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/jlorek
+# environment
+LS_COLORS = 
+# environment
+XDG_SESSION_DESKTOP = cinnamon
+# environment
+SSH_AUTH_SOCK = /run/user/14087/keyring/ssh
+# environment
+GIO_LAUNCHED_DESKTOP_FILE_PID = 2299
+# automatic
+%F = $(notdir $%)
+# environment
+DISPLAY = :0
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /home/jlorek/Pulpit/zaawprogcpp/AdvancedCpp
+# environment
+QT_QPA_PLATFORMTHEME = qt5ct
+# default
+.LOADED := 
+# environment
+XDG_SEAT = seat0
+# environment
+SSH_AGENT_PID = 1246
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
+# environment
+GTK_MODULES = gail:atk-bridge
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/services/extensions/node/extensionHostProcess
+# environment
+HOME = /home/jlorek
+# environment
+LESSCLOSE = /usr/bin/lesspipe %s %s
+# environment
+VSCODE_CODE_CACHE_PATH = /home/jlorek/.config/Code/CachedData/7f6ab5485bbc008386c4386d08766667e155244e
+# environment
+LOGNAME = jlorek
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+MATHEMATICA_HOME = /usr/local/Wolfram/Mathematica/10.1
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# environment
+GNOME_DESKTOP_SESSION_ID = this-is-deprecated
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XDG_VTNR = 7
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 0
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /run/user/14087/vscode-ipc-83aaa9dc-8937-4dfc-9793-0c57323b24c3.sock
+# environment
+XDG_SESSION_ID = c2
+# environment
+USER = jlorek
+# makefile
+.DEFAULT_GOAL := 
+# environment
+XDG_CURRENT_DESKTOP = X-Cinnamon
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := make
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# environment
+XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
+# environment
+VSCODE_IPC_HOOK = /run/user/14087/vscode-29eb9955-1.60.2-main.sock
+# makefile
+MAKEFLAGS = pqrR
+# environment
+MFLAGS = -pqrR
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+BREAKPAD_DUMP_LOCATION = /home/jlorek/.config/Code/exthost Crash Reports
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+GDK_BACKEND = x11
+# automatic
++F = $(notdir $+)
+# environment
+CINNAMON_VERSION = 5.0.7
+# environment
+QT_ACCESSIBILITY = 1
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+LC_ALL = C
+# environment
+GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# environment
+CHROME_DESKTOP = code-url-handler.desktop
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# environment
+GJS_DEBUG_OUTPUT = stderr
+# default
+.RECIPEPREFIX := 
+# environment
+LANG = C
+# environment
+VSCODE_PID = 2299
+# variable set hash-table stats:
+# Load=100/1024=10%, Rehash=0, Collisions=8/122=7%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 55, inode 2548903): 10 files, no impossibilities.
+
+# 10 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+all:
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+makefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+GNUmakefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# files hash-table stats:
+# Load=6/1024=1%, Rehash=0, Collisions=0/15=0%
+# VPATH Search Paths
+
+# No 'vpath' search paths.
+
+# No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 18 / storage = 181 B / avg = 10 B
+# current buf: size = 8162 B / used = 181 B / count = 18 / avg = 10 B
+
+# strcache performance: lookups = 21 / hit rate = 14%
+# hash-table stats:
+# Load=18/8192=0%, Rehash=0, Collisions=1/21=5%
+# Finished Make data base on Tue Jan  4 12:13:41 2022
+
+ 

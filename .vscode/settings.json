@@ -1,0 +1,19 @@
+{
+    "makefile.extensionOutputFolder": "./.vscode",
+    "files.associations": {
+        "atomic": "cpp",
+        "*.tcc": "cpp",
+        "chrono": "cpp",
+        "condition_variable": "cpp",
+        "vector": "cpp",
+        "future": "cpp",
+        "iostream": "cpp",
+        "istream": "cpp",
+        "memory": "cpp",
+        "mutex": "cpp",
+        "ostream": "cpp",
+        "system_error": "cpp",
+        "thread": "cpp",
+        "tuple": "cpp"
+    }
+}
