@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Jan  4 12:13:41 2022
+# Make data base, printed on Tue Jan 11 12:16:13 2022
 
 # Variables
 
@@ -77,7 +77,7 @@ PATH = /home/jlorek/.local/bin:/home/jlorek/.local/bin:/usr/local/sbin:/usr/loca
 # environment
 GPG_AGENT_INFO = /run/user/14087/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/Vela:@/tmp/.ICE-unix/1176,unix/Vela:/tmp/.ICE-unix/1176
+SESSION_MANAGER = local/Vela:@/tmp/.ICE-unix/1160,unix/Vela:/tmp/.ICE-unix/1160
 # environment
 XDG_RUNTIME_DIR = /run/user/14087
 # environment
@@ -95,7 +95,7 @@ XDG_SESSION_DESKTOP = cinnamon
 # environment
 SSH_AUTH_SOCK = /run/user/14087/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 2299
+GIO_LAUNCHED_DESKTOP_FILE_PID = 1921
 # automatic
 %F = $(notdir $%)
 # environment
@@ -111,7 +111,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1246
+SSH_AGENT_PID = 1229
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -147,7 +147,7 @@ MAKECMDGOALS := all
 # environment
 SHLVL = 0
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/14087/vscode-ipc-83aaa9dc-8937-4dfc-9793-0c57323b24c3.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/14087/vscode-ipc-b03a7788-8e50-4045-adca-649eeb1919f0.sock
 # environment
 XDG_SESSION_ID = c2
 # environment
@@ -183,7 +183,7 @@ GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
 # environment
-CINNAMON_VERSION = 5.0.7
+CINNAMON_VERSION = 5.2.7
 # environment
 QT_ACCESSIBILITY = 1
 # default
@@ -211,7 +211,7 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
-VSCODE_PID = 2299
+VSCODE_PID = 1921
 # variable set hash-table stats:
 # Load=100/1024=10%, Rehash=0, Collisions=8/122=7%
 
@@ -221,9 +221,9 @@ VSCODE_PID = 2299
 
 # Directories
 
-# . (device 55, inode 2548903): 10 files, no impossibilities.
+# . (device 55, inode 2548903): 12 files, no impossibilities.
 
-# 10 files, no impossibilities in 1 directories.
+# 12 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -273,12 +273,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 18 / storage = 181 B / avg = 10 B
-# current buf: size = 8162 B / used = 181 B / count = 18 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 20 / storage = 209 B / avg = 10 B
+# current buf: size = 8162 B / used = 209 B / count = 20 / avg = 10 B
 
-# strcache performance: lookups = 21 / hit rate = 14%
+# strcache performance: lookups = 23 / hit rate = 13%
 # hash-table stats:
-# Load=18/8192=0%, Rehash=0, Collisions=1/21=5%
-# Finished Make data base on Tue Jan  4 12:13:41 2022
+# Load=20/8192=0%, Rehash=0, Collisions=1/23=4%
+# Finished Make data base on Tue Jan 11 12:16:13 2022
 
  

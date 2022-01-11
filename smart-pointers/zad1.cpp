@@ -29,8 +29,8 @@ class Engine {
     {
     }
 
-    void addFuelTank(FuelTank &tank) {
-        fuelTankList.emplace_back(tank);l
+    void addFuelTank(shared_ptr<FuelTank> tank) {
+        fuelTankList.emplace_back(tank);
     }
 }
 

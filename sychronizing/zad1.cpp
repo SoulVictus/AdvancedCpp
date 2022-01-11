@@ -13,16 +13,14 @@ private:
     std::vector<double> result_list;
     std::vector<std::thread> thread_list;
     std::mutex queue_mtx;
-    std::mutex threadpool_mtx;
     std::mutex average_mtx;
     std::condition_variable condition;    
     bool terminate_pool = false;
-    bool is_counting_average = false;
 
 public:
     TaskManager(unsigned int threadsNumber) {
-        for (int i = 0; i < threadsNumber; i++) {
-            std::thread th(task_checking);
+        for (unsigned int i = 0; i < threadsNumber; i++) {
+            std::thread th(&TaskManager::task_checking, this);
             thread_list.push_back(std::move(th));
         }
     }
@@ -36,14 +34,14 @@ public:
         condition.notify_one();
     }
 
-    std::function<void()> task_checking = [&]() {
+    void task_checking() {
         std::function<double()> job;
         while (true)
         { 
             {
                 std::unique_lock<std::mutex> lock(queue_mtx);
 
-                condition.wait(lock, [&]() {
+                condition.wait(lock, [this]() {
                     return !task_queue.empty() || terminate_pool;
                 });
 
@@ -54,7 +52,11 @@ public:
 
                 job = task_queue.front();
                 task_queue.pop();
-                result_list.push_back(job());
+                lock.unlock();
+                double result = job();
+
+                lock.lock();
+                result_list.push_back(result);
                 std::cout << "Taking task: " << result_list.size() << "\n";
                 average();
 
@@ -62,28 +64,30 @@ public:
         }
     };
 
-    void average() {
-        // {
-        //     std::unique_lock<std::mutex> lock(queue_mtx);
-            double average = 0.0;
+    double average() {
 
-            for(size_t i = 0; i < result_list.size(); i++)
-            {
-                average += result_list[i];
-            }
+        std::unique_lock<std::mutex> lock(average_mtx);
+        double average = 0.0;
+        double result = 0;
 
-            std::cout << average / result_list.size() << "\n";
-        // }
+        for(size_t i = 0; i < result_list.size(); i++)
+        {
+            average += result_list[i];
+        }
+
+        double result = average / result_list.size();
+        std::cout << result << "\n";
+        return result;
     }
 
     void stop() {
         std::unique_lock<std::mutex> lock(queue_mtx);
-        terminate_pool = true;
+            terminate_pool = true;
         lock.unlock();
 
         condition.notify_all();
 
-        for(int i = 0; i < thread_list.size(); i++)
+        for(unsigned int i = 0; i < thread_list.size(); i++)
         {
             thread_list.at(i).join();
         }
@@ -104,12 +108,13 @@ int main()
 {
     TaskManager manager(std::thread::hardware_concurrency());
 
-    for (int i = 1; i < 50; i++)
+    for (int i = 1; i < 50000; i++)
     {
         std::function<double()> func = std::bind(f, i*1.0);
         manager.add_task(func);
     }
     manager.average();
     manager.stop();
+
     return 0;
 }
