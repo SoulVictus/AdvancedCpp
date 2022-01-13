@@ -57,8 +57,8 @@ public:
 
                 lock.lock();
                 result_list.push_back(result);
-                std::cout << "Taking task: " << result_list.size() << "\n";
-                average();
+                std::cout << std::this_thread::get_id() << " taking task: " << result_list.size() << "\n";
+                // average();
 
             }
         }
@@ -66,16 +66,17 @@ public:
 
     double average() {
 
-        std::unique_lock<std::mutex> lock(average_mtx);
         double average = 0.0;
-        double result = 0;
+        std::unique_lock<std::mutex> lock(average_mtx);
+        double amount = result_list.size();
 
-        for(size_t i = 0; i < result_list.size(); i++)
+        for(size_t i = 0; i < amount; i++)
         {
             average += result_list[i];
         }
+        lock.unlock();
 
-        double result = average / result_list.size();
+        double result = average / amount;
         std::cout << result << "\n";
         return result;
     }
@@ -108,13 +109,13 @@ int main()
 {
     TaskManager manager(std::thread::hardware_concurrency());
 
-    for (int i = 1; i < 50000; i++)
+    for (int i = 1; i <= 10; i++)
     {
         std::function<double()> func = std::bind(f, i*1.0);
         manager.add_task(func);
     }
-    manager.average();
     manager.stop();
+    manager.average();
 
     return 0;
 }
