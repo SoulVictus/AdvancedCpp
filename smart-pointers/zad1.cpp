@@ -12,8 +12,9 @@ class FuelTank {
     std::mutex tank_mtx;
 
 public:
-    FuelTank(unsigned int amount) {
-        this->fuelCapacity = amount;
+    FuelTank(unsigned int amount)
+        : fuelCapacity(amount)
+    {
     }
 
     unsigned int getFuel(unsigned int amount) {
@@ -31,6 +32,7 @@ public:
 
 class Engine {
     std::vector<std::shared_ptr<FuelTank>> fuelTankList;
+    std::mutex tankListMtx;
     std::thread worker;
     unsigned int fuelDemand;
     unsigned int consumingInterval;
@@ -44,19 +46,27 @@ public:
         worker = std::thread(&Engine::threadLoop, this);
     }
 
+    ~Engine()
+    {
+        worker.join();
+    }
+
     void addFuelTank(std::shared_ptr<FuelTank> &tank) {
+        std::unique_lock<std::mutex> lock(tankListMtx);
         fuelTankList.emplace_back(tank);
         wereTanksAdded = true;
     }
 
     void threadLoop() {
         while(true) {
+            std::unique_lock<std::mutex> lock(tankListMtx);
             if (fuelTankList.empty() && wereTanksAdded)
             {
                 return;
             }
 
             getFuel();
+            lock.unlock();
             std::this_thread::sleep_for(std::chrono::seconds(consumingInterval));
         }
     }
@@ -81,14 +91,9 @@ public:
             {
                 fuelTankList.erase(fuelTankList.begin() + detachTankIds[i]);
             }
-            std::cout << "detaching tank, current tanks amount: " << fuelTankList.size() << "\n";
+            //std::cout << "detaching tank, current tanks amount: " << fuelTankList.size() << "\n";
         }
     }
-
-    std::thread& getThread() {
-        return worker;
-    }
-
 };
 
 int main() {
@@ -108,10 +113,6 @@ int main() {
         e3.addFuelTank(fueltanks[i]);
 
     }
-
-    e1.getThread().join();
-    e2.getThread().join();
-    e3.getThread().join();
 
     for (size_t i = 0; i < fueltanks.size(); i++)
     {

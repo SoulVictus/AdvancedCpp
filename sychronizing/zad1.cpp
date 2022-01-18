@@ -25,6 +25,10 @@ public:
         }
     }
 
+    ~TaskManager() {
+        stop();
+    }
+
     void add_task(std::function<double()> task) {
         {
             std::unique_lock<std::mutex> lock(queue_mtx);
@@ -38,29 +42,26 @@ public:
         std::function<double()> job;
         while (true)
         { 
+            std::unique_lock<std::mutex> lock(queue_mtx);
+
+            condition.wait(lock, [this]() {
+                return !task_queue.empty() || terminate_pool;
+            });
+
+            if (terminate_pool && task_queue.empty())
             {
-                std::unique_lock<std::mutex> lock(queue_mtx);
-
-                condition.wait(lock, [this]() {
-                    return !task_queue.empty() || terminate_pool;
-                });
-
-                if (terminate_pool && task_queue.empty())
-                {
-                    return;
-                }
-
-                job = task_queue.front();
-                task_queue.pop();
-                lock.unlock();
-                double result = job();
-
-                lock.lock();
-                result_list.push_back(result);
-                std::cout << std::this_thread::get_id() << " taking task: " << result_list.size() << "\n";
-                // average();
-
+                return;
             }
+
+            job = task_queue.front();
+            task_queue.pop();
+            lock.unlock();
+            double result = job();
+
+            std::unique_lock<std::mutex> avg_lock(average_mtx);
+            result_list.push_back(result);
+            std::cout << std::this_thread::get_id() << " taking task: " << result_list.size() << "\n";
+            // average();
         }
     };
 
@@ -83,7 +84,7 @@ public:
 
     void stop() {
         std::unique_lock<std::mutex> lock(queue_mtx);
-            terminate_pool = true;
+        terminate_pool = true;
         lock.unlock();
 
         condition.notify_all();
@@ -92,10 +93,7 @@ public:
         {
             thread_list.at(i).join();
         }
-    }
-
-    std::queue<std::function<double()>> getTasks() {
-        return task_queue;
+        thread_list.clear();
     }
 
 };
@@ -109,7 +107,7 @@ int main()
 {
     TaskManager manager(std::thread::hardware_concurrency());
 
-    for (int i = 1; i <= 10; i++)
+    for (int i = 1; i <= 100; i++)
     {
         std::function<double()> func = std::bind(f, i*1.0);
         manager.add_task(func);
